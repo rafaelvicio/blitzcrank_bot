@@ -26,7 +26,11 @@ const bot = new TelegramBot( token, { polling: true } )
   const sendLevel = ( msg, match ) =>
   http.get(`${url_id}${match[ 1 ]}${key}`)
     .then( cb1 )
-    .then((response) => console.log(response.data.summonerLevel))
+    .then((response) =>
+      bot.sendMessage( msg.chat.id, "O jogador " + response.data.name + " tem level " + response.data.summonerLevel )
+      .then( console.log(match) )
+      .catch()
+    )
     .catch((err) => console.log(err))
 
   const sendStatus = ( msg, match ) =>
