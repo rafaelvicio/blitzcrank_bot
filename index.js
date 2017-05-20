@@ -19,6 +19,15 @@ http.get(`${url_ranked}${response.data.id}${key}`)
 const cb3 = (response) =>
 http.get(`${url_challenger}${response.data.id}${key}`)
 
+const crateObject = ( obj ) =>
+  ( { [ Object.values( obj )[ 1 ] ] : Object.values( obj )[ 0 ] } )
+
+const merge = ( result, obj ) =>
+  result.concat( [ crateObject( obj ) ] )
+
+const getValuesFromObject = ( result, obj ) =>
+  merge( result, obj )
+
 const sendLevel = ( msg, match ) =>
 http.get(`${url_id}${match[ 1 ]}${key}`)
   .then( cb1 )
@@ -29,10 +38,27 @@ http.get(`${url_id}${match[ 1 ]}${key}`)
     )
   .catch((err) => console.log(err))
 
-const sendRanked = ( msg, match ) =>
+const sendRankedSolo = ( msg, match ) =>
 http.get(`${url_id}${match[ 1 ]}${key}`)
   .then( cb2 )
-  .then((response) => console.log(response.data))
+  .then((response) =>
+    bot.sendMessage( msg.chat.id, "O jogador " + response.data[0].playerOrTeamName + " esta no elo " +
+    response.data[0].tier + " " + response.data[0].rank + " com " + response.data[0].leaguePoints + " pontos e " + response.data[0].wins + " vitorias.")
+      .then( console.log(match) )
+      .catch()
+    )
+  .catch((err) => console.log(err))
+
+const sendRankedFlex = ( msg, match ) =>
+http.get(`${url_id}${match[ 1 ]}${key}`)
+  .then( cb2 )
+  .then((response) =>
+    bot.sendMessage( msg.chat.id, "O jogador " + response.data[1].playerOrTeamName + " esta no elo " +
+    response.data[1].tier + " " + response.data[1].rank + " com " + response.data[1].leaguePoints + " pontos e " +
+    response.data[1].wins + " vitorias.")
+      .then( console.log(match) )
+      .catch()
+    )
   .catch((err) => console.log(err))
 
 const sendChallenger = ( msg, match ) =>
@@ -42,5 +68,6 @@ http.get(`${url_id}${match[ 1 ]}${key}`)
   .catch((err) => console.log(err))
 
 bot.onText( /\/invocador (.*)/, sendLevel)
-bot.onText( /\/ranked (.*)/, sendRanked)
+bot.onText( /\/rankedsolo (.*)/, sendRankedSolo)
+bot.onText( /\/rankedflex (.*)/, sendRankedFlex)
 bot.onText( /\/challenger (.*)/, sendChallenger)
