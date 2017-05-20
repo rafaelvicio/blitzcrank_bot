@@ -40,14 +40,24 @@ http.get(`${url_id}${match[ 1 ]}${key}`)
     )
   .catch((err) => console.log(err))
 
-const sendComandos = ( msg, match ) =>
+const sendRisada = ( msg, match ) =>
 http.get(`${url_id}${match[ 1 ]}${key}`)
   .then( cb1 )
   .then((response) =>
     bot.sendMessage( msg.chat.id, "Eu conheço os seguints comandos: \n" +
-                      "/invocador + nome de invocador - Responde com as principais informações do invocador  \n" +
-                      "/sendRankedSolo + nome de invocador - Responde com as informações da Ranked Solo do invocado  \n" +
-                      "/sendRankedFlex + nome de invocador - Responde com as informações da Ranked Flex do invocado \n")
+                      "/invocador + nome de invocador: - Responde com as principais informações do invocador  \n" +
+                      "/sendRankedSolo + nome de invocador: - Responde com as informações da Ranked Solo do invocado  \n" +
+                      "/sendRankedFlex + nome de invocador: - Responde com as informações da Ranked Flex do invocado \n")
+      .then( console.log(match) )
+      .catch()
+    )
+  .catch((err) => console.log(err))
+
+const sendComandos = ( msg, match ) =>
+http.get(`${url_id}${match[ 1 ]}${key}`)
+  .then( cb1 )
+  .then((response) =>
+    bot.sendMessage( msg.chat.id, "Hahahahaha!")
       .then( console.log(match) )
       .catch()
     )
@@ -79,5 +89,6 @@ http.get(`${url_id}${match[ 1 ]}${key}`)
 
 bot.onText( /\/start/, sendStart)
 bot.onText( /\/comandos/, sendComandos)
+bot.onText( /lol|kkkk|huehue|h+a+h+a+|h+e+h+e+|h+i+h+i+|h+u+a+s+|j+e+j+e+|h+u+a+h+u+a|h+u+e+h+u+e/i/, sendRisada)
 bot.onText( /\/rankedsolo (.*)/, sendRankedSolo)
 bot.onText( /\/rankedflex (.*)/, sendRankedFlex)
