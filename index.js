@@ -32,6 +32,31 @@ const sendLevel = ( msg, match ) =>
 http.get(`${url_id}${match[ 1 ]}${key}`)
   .then( cb1 )
   .then((response) =>
+    bot.sendMessage( msg.chat.id, "Energizado e pronto para servir. \n" +
+                      "Para conhecer os meus comandos digite /help")
+      .then( console.log(match) )
+      .catch()
+    )
+  .catch((err) => console.log(err))
+
+const sendLevel = ( msg, match ) =>
+http.get(`${url_id}${match[ 1 ]}${key}`)
+  .then( cb1 )
+  .then((response) =>
+    bot.sendMessage( msg.chat.id, "Eu conheço os seguints comandos: \n" +
+                      "/invocador + nome de invocador - Responde com as principais informações do invocador  \n" +
+                      "/sendRankedSolo + nome de invocador - Responde com as informações da Ranked Solo do invocado  \n" +
+                      "/sendRankedFlex + nome de invocador - Responde com as informações da Ranked Flex do invocado \n" +
+                      "  \n" +)
+      .then( console.log(match) )
+      .catch()
+    )
+  .catch((err) => console.log(err))
+
+const sendLevel = ( msg, match ) =>
+http.get(`${url_id}${match[ 1 ]}${key}`)
+  .then( cb1 )
+  .then((response) =>
     bot.sendMessage( msg.chat.id, "O jogador " + response.data.name + " tem level " + response.data.summonerLevel )
       .then( console.log(match) )
       .catch()
@@ -43,7 +68,8 @@ http.get(`${url_id}${match[ 1 ]}${key}`)
   .then( cb2 )
   .then((response) =>
     bot.sendMessage( msg.chat.id, "O jogador " + response.data[0].playerOrTeamName + " esta no elo " +
-    response.data[0].tier + " " + response.data[0].rank + " com " + response.data[0].leaguePoints + " pontos e " + response.data[0].wins + " vitorias.")
+    response.data[0].tier + " " + response.data[0].rank + " com " + response.data[0].leaguePoints +
+    " pontos e " + response.data[0].wins + " vitórias.")
       .then( console.log(match) )
       .catch()
     )
@@ -54,8 +80,8 @@ http.get(`${url_id}${match[ 1 ]}${key}`)
   .then( cb2 )
   .then((response) =>
     bot.sendMessage( msg.chat.id, "O jogador " + response.data[1].playerOrTeamName + " esta no elo " +
-    response.data[1].tier + " " + response.data[1].rank + " com " + response.data[1].leaguePoints + " pontos e " +
-    response.data[1].wins + " vitorias.")
+    response.data[1].tier + " " + response.data[1].rank + " com " + response.data[1].leaguePoints +
+    " pontos e " + response.data[1].wins + " vitórias.")
       .then( console.log(match) )
       .catch()
     )
@@ -67,6 +93,8 @@ http.get(`${url_id}${match[ 1 ]}${key}`)
   .then((response) => console.log(response.data))
   .catch((err) => console.log(err))
 
+bot.onText( /\/start/, sendStart)
+bot.onText( /\/help (.*)/, sendHelp)
 bot.onText( /\/invocador (.*)/, sendLevel)
 bot.onText( /\/rankedsolo (.*)/, sendRankedSolo)
 bot.onText( /\/rankedflex (.*)/, sendRankedFlex)
