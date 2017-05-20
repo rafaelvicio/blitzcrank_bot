@@ -9,11 +9,7 @@ const url_level = `https://br1.api.riotgames.com/lol/summoner/v3/summoners/`
 const url_ranked = `https://br1.api.riotgames.com/lol/league/v3/positions/by-summoner/`
 const url_challenger = `https://br1.api.riotgames.com/lol/league/v3/challengerleagues/by-queue/RANKED_SOLO_5x5`
 
-const port = process.env.PORT || 8443
-const host = process.env.HOST
-
-const bot = new TelegramBot(token, {webHook: {port: port, host: host}});
-//const bot = new TelegramBot( token, { polling: true } )
+const bot = new TelegramBot( token, { polling: true } )
 
 const cb1 = (response) =>
 http.get(`${url_level}${response.data.id}${key}`)
