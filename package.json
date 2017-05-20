@@ -1,7 +1,7 @@
 {
-  "name": "bot_universitario",
+  "name": "blitzcrank_bot",
   "version": "1.0.0",
-  "description": "BOT para turmas de faculdade",
+  "description": "BOT para League of Legends",
   "main": "index.js",
   "scripts": {
     "start": "node index",
@@ -11,7 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.1",
-    "cheerio": "^0.22.0",
     "node-telegram-bot-api": "^0.27.0"
   }
 }
