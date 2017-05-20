@@ -40,7 +40,7 @@ http.get(`${url_id}${match[ 1 ]}${key}`)
     )
   .catch((err) => console.log(err))
 
-const sendRisada = ( msg, match ) =>
+const sendComandos = ( msg, match ) =>
 http.get(`${url_id}${match[ 1 ]}${key}`)
   .then( cb1 )
   .then((response) =>
@@ -53,7 +53,7 @@ http.get(`${url_id}${match[ 1 ]}${key}`)
     )
   .catch((err) => console.log(err))
 
-const sendComandos = ( msg, match ) =>
+const sendRisada = ( msg, match ) =>
 http.get(`${url_id}${match[ 1 ]}${key}`)
   .then( cb1 )
   .then((response) =>
@@ -89,6 +89,6 @@ http.get(`${url_id}${match[ 1 ]}${key}`)
 
 bot.onText( /\/start/, sendStart)
 bot.onText( /\/comandos/, sendComandos)
-bot.onText( /lol|kkkk|huehue|h+a+h+a+|h+e+h+e+|h+i+h+i+|h+u+a+s+|j+e+j+e+|h+u+a+h+u+a|h+u+e+h+u+e/, sendRisada)
+bot.onText( /lol|kkkk|huehue|h+a+h+a+|h+e+h+e+|h+i+h+i+|h+u+a+s+|j+e+j+e+|h+u+a+h+u+a|h+u+e+h+u+e/i, sendRisada)
 bot.onText( /\/rankedsolo (.*)/, sendRankedSolo)
 bot.onText( /\/rankedflex (.*)/, sendRankedFlex)
