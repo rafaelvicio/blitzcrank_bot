@@ -33,13 +33,14 @@ http.get(`${url_id}${match[ 1 ]}${key}`)
   .then( cb1 )
   .then((response) =>
     bot.sendMessage( msg.chat.id, "Energizado e pronto para servir. \n" +
-                      "Para conhecer os meus comandos digite /help")
+                      "Eu fui criado para servi a você, basta enviar o comando certo. \n" +
+                      "Para conhecer os meus comandos digite /comandos")
       .then( console.log(match) )
       .catch()
     )
   .catch((err) => console.log(err))
 
-const sendHelp = ( msg, match ) =>
+const sendComandos = ( msg, match ) =>
 http.get(`${url_id}${match[ 1 ]}${key}`)
   .then( cb1 )
   .then((response) =>
@@ -47,16 +48,6 @@ http.get(`${url_id}${match[ 1 ]}${key}`)
                       "/invocador + nome de invocador - Responde com as principais informações do invocador  \n" +
                       "/sendRankedSolo + nome de invocador - Responde com as informações da Ranked Solo do invocado  \n" +
                       "/sendRankedFlex + nome de invocador - Responde com as informações da Ranked Flex do invocado \n")
-      .then( console.log(match) )
-      .catch()
-    )
-  .catch((err) => console.log(err))
-
-const sendLevel = ( msg, match ) =>
-http.get(`${url_id}${match[ 1 ]}${key}`)
-  .then( cb1 )
-  .then((response) =>
-    bot.sendMessage( msg.chat.id, "O jogador " + response.data.name + " tem level " + response.data.summonerLevel )
       .then( console.log(match) )
       .catch()
     )
@@ -86,15 +77,7 @@ http.get(`${url_id}${match[ 1 ]}${key}`)
     )
   .catch((err) => console.log(err))
 
-const sendChallenger = ( msg, match ) =>
-http.get(`${url_id}${match[ 1 ]}${key}`)
-  .then( cb3 )
-  .then((response) => console.log(response.data))
-  .catch((err) => console.log(err))
-
 bot.onText( /\/start/, sendStart)
-bot.onText( /\/help (.*)/, sendHelp)
-bot.onText( /\/invocador (.*)/, sendLevel)
+bot.onText( /\/comandos/, sendComandos)
 bot.onText( /\/rankedsolo (.*)/, sendRankedSolo)
 bot.onText( /\/rankedflex (.*)/, sendRankedFlex)
-bot.onText( /\/challenger (.*)/, sendChallenger)
