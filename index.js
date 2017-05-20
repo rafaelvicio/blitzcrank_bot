@@ -28,7 +28,7 @@ const merge = ( result, obj ) =>
 const getValuesFromObject = ( result, obj ) =>
   merge( result, obj )
 
-const sendLevel = ( msg, match ) =>
+const sendStart = ( msg, match ) =>
 http.get(`${url_id}${match[ 1 ]}${key}`)
   .then( cb1 )
   .then((response) =>
@@ -39,7 +39,7 @@ http.get(`${url_id}${match[ 1 ]}${key}`)
     )
   .catch((err) => console.log(err))
 
-const sendLevel = ( msg, match ) =>
+const sendHelp = ( msg, match ) =>
 http.get(`${url_id}${match[ 1 ]}${key}`)
   .then( cb1 )
   .then((response) =>
