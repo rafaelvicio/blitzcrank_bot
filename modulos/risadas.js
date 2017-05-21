@@ -11,7 +11,7 @@ const risadas = [
 
 const sendRisadas = ( msg, match ) =>
   bot.sendMessage( msg.chat.id, risadas[Math.floor(Math.random() * risadas.length)] )
-    .then( logSuccessEcho( msg, match ) )
-    .catch( logErrorEcho( 'Error:') );
+    .then( console.log(match) )
+    .catch( (err) => console.log(err) );
 
 module.exports = sendRisadas
