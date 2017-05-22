@@ -14,9 +14,11 @@ http.get(`${url_id}${match[ 1 ]}${key}`)
   .then( getDados )
   .then((response) =>
     bot.sendMessage( msg.chat.id, "Eu conheço os seguints comandos: \n" +
+                      "\n" +
                       "/invocador + nome de invocador: - Responde com as principais informações do invocador  \n" +
                       "/rankedsolo + nome de invocador: - Responde com as informações da Ranked Solo do invocado  \n" +
-                      "/rankedflex + nome de invocador: - Responde com as informações da Ranked Flex do invocado \n")
+                      "/rankedflex + nome de invocador: - Responde com as informações da Ranked Flex do invocado \n" +
+                      "/status: - Informa sobre a atual situação do servidor  \n")
       .then( console.log(match) )
       .catch()
     )
