@@ -5,6 +5,7 @@ const bot = require('../config/bot')
 const risadas = [
   'ha ha ha ha ha',
   'he he he he he',
+  'ho ho ho ho ho',
   'kk kk kk kk kk'
 ]
 
