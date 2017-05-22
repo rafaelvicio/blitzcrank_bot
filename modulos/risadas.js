@@ -3,10 +3,9 @@ const http = require( `axios` )
 const bot = require('../config/bot')
 
 const risadas = [
-  'hehehehehe',
-  'hahahahaha',
-  'hauhauhauh',
-  'kkkkkkkkkk'
+  'ha ha ha ha ha',
+  'he he he he he',
+  'kk kk kk kk kk'
 ]
 
 const sendRisadas = ( msg, match ) =>
