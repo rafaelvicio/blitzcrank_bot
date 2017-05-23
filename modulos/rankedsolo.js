@@ -19,6 +19,8 @@ http.get(`${url_id}${match[ 1 ]}${key}`)
       .then( console.log(match) )
       .catch()
     )
-  .catch((err) => console.log(err))
+    .catch(
+      bot.sendMessage( msg.chat.id, "Esse invocador não está classificado.")
+    )
 
   module.exports = sendRankedSolo
